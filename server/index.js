@@ -71,9 +71,10 @@ app.get('/auth/callback', (req, res) => {
 
   console.log("about to request")
   request.post(authOptions, function(error, response, body) {
-    if (!error && response.statusCode === 200) {1
+    if (!error && response.statusCode === 200) {
+      console.log(body.access_token);
       access_token = body.access_token;
-      res.redirect('localhost:3000/')
+      res.redirect('http://localhost:3000/')
     }
     else{
       console.log(error)
