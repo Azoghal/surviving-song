@@ -15,6 +15,12 @@ export default function RootLayout({
             <Link href="/">
               Home
             </Link>
+            <Link href="/survivingSongs">
+              Surviving Song
+            </Link>
+            <Link href="/playlistCovers">
+              Playlist Covers
+            </Link>
           </nav>
           {children}
         </main>
