@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-head-element */
 import Link from 'next/link';
 import './globals.css';
+import Login from './Login'
 
 export default function RootLayout({
   children,
@@ -12,6 +13,7 @@ export default function RootLayout({
       <body>
         <main>
           <nav>
+            <div>
             <Link href="/">
               Home
             </Link>
@@ -21,6 +23,8 @@ export default function RootLayout({
             <Link href="/playlistCovers">
               Playlist Covers
             </Link>
+            <Login/>
+            </div>
           </nav>
           {children}
         </main>
