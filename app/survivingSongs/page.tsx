@@ -4,9 +4,10 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 async function fetchProfile(){
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get("access_token");
-  console.log(code);
+  const current_url = window.location.href;
+  const url = new URL(current_url)
+  const access_token = url.searchParams.get('access_token');
+  console.log(access_token);
 }
 
 export default function SurvivingSongs() {
