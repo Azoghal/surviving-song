@@ -5,12 +5,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 async function fetchProfile(){
   const params = new URLSearchParams(window.location.search);
-  const code = params.get("code");
+  const code = params.get("access_token");
   console.log(code);
-  const result = await fetch("https://api.spotify.com/v1/me", {
-        method: "GET", headers: { Authorization: `Bearer ${code}` }
-    });
-  console.log(result.json());
 }
 
 export default function SurvivingSongs() {
