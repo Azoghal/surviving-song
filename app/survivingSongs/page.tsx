@@ -3,7 +3,9 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-async function fetchProfile(){
+let playlists: any;
+
+function getTokens(){
   const hash = window.location.hash;
   const hashWithoutHashSymbol = hash.slice(1);
   // Split the hash into an array of parameter strings
@@ -23,8 +25,17 @@ async function fetchProfile(){
   const accessToken = parameters['access_token'];
   const refreshToken = parameters['refresh_token'];
   
-  // Use the values in your code
-  console.log(accessToken, refreshToken);
+  return {accessToken:accessToken, refreshToken:refreshToken}
+}
+
+async function fetchPlaylists(){
+  const tokens = getTokens();
+  const result = await fetch("https://api.spotify.com/v1/me/playlists", {
+        method: "GET", headers: { Authorization: `Bearer ${tokens.accessToken}`, limit: "10", offset:"0"}
+    });
+  
+  const temp = await result.json();
+  console.log(temp);
 }
 
 export default function SurvivingSongs() {
@@ -48,7 +59,10 @@ export default function SurvivingSongs() {
           loading="lazy">
         </iframe>
       </div>
-      <button onClick={fetchProfile}> Fetch Profile</button>
+      <button onClick={fetchPlaylists}> Fetch Playlists</button>
+      <div>
+        {playlists}
+      </div>
     </main>
   )
 }
