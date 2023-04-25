@@ -30,9 +30,20 @@ function getTokens(){
 
 async function fetchPlaylists(){
   const tokens = getTokens();
-  const result = await fetch("https://api.spotify.com/v1/me/playlists", {
-        mode:'no-cors',
-        method: "GET", headers: { Authorization: `Bearer ${tokens.accessToken}`, limit: "10", offset:"0"}
+  const result = await fetch("https://api.spotify.com/v1/me/playlists?limit=10&offset=0",
+  {
+    mode:'no-cors',
+    method: "GET", headers: { Authorization: `Bearer ${tokens.accessToken}`}
+  });
+  
+  const temp = await result.json();
+  console.log(temp);
+}
+
+async function fetchProfile(){
+  const tokens = getTokens();
+  const result = await fetch("https://api.spotify.com/v1/me", {
+        method: "GET", headers: { Authorization: `Bearer ${tokens.accessToken}`}
     });
   
   const temp = await result.json();
@@ -61,6 +72,7 @@ export default function SurvivingSongs() {
         </iframe>
       </div>
       <button onClick={fetchPlaylists}> Fetch Playlists</button>
+      <button onClick={fetchProfile}> Fetch Profile</button>
       <div>
         {playlists}
       </div>
