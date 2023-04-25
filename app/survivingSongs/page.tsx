@@ -31,6 +31,7 @@ function getTokens(){
 async function fetchPlaylists(){
   const tokens = getTokens();
   const result = await fetch("https://api.spotify.com/v1/me/playlists", {
+        mode:'no-cors',
         method: "GET", headers: { Authorization: `Bearer ${tokens.accessToken}`, limit: "10", offset:"0"}
     });
   
