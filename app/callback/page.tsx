@@ -10,7 +10,7 @@ export default function callback() {
   return (
     <main>
       <div>
-        <p> You&apos;'ve logged in, now it&apos;s time to do some stuff!</p>
+        <p> You&apos;ve logged in, now it&apos;s time to do some stuff!</p>
       </div>
     </main>
   )
