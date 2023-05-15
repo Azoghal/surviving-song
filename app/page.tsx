@@ -40,7 +40,7 @@ export default function Home() {
         <p>
           Home of my spotify adventures.
         </p>
-        <button onClick={fetchGet()}>get</button>
+        <button onClick={fetchGet}>get</button>
         {credentials && credentials["accessToken"]}
       </div>
     </main>
