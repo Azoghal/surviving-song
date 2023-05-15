@@ -1,5 +1,4 @@
 import { Inter } from 'next/font/google'
-import cookieCutter from 'cookie-cutter'
 
 const inter = Inter({ subsets: ['latin'] })
 
