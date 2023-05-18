@@ -34,6 +34,18 @@ async function fetchProfile(){
   console.log(temp);
 }
 
+async function fetchFeist(){
+  const tokens = getTokens();
+  const result = await fetch("https://api.spotify.com/artist/6CWTBjOJK75cTE8Xv8u1kj", {
+        method: "GET", headers: { Authorization: `Bearer ${tokens.accessToken}`}
+    });
+  
+  const temp = await result.json();
+  console.log(temp);
+}
+
+//6CWTBjOJK75cTE8Xv8u1kj
+
 export default function SurvivingSongs() {
   return (
     <main>
@@ -57,6 +69,7 @@ export default function SurvivingSongs() {
       </div>
       <button onClick={fetchPlaylists}> Fetch Playlists</button>
       <button onClick={fetchProfile}> Fetch Profile</button>
+      <button onClick={fetchFeist}> Fetch Feist</button>
       <div>
         {playlists}
       </div>
