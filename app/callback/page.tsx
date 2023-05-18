@@ -12,13 +12,15 @@ function getTokens(){
     var params = query.split('&')
     console.log(params)
     //console.log(params[0].split("=")[1])
-    localStorage.setItem('auth-token', JSON.stringify(params[0].split("=")[1]))
-    localStorage.setItem('refresh-token', JSON.stringify(params[1].split("=")[1]))
+    params.forEach(paramString =>{
+      const parts = paramString.split('=')
+      localStorage.setItem(parts[0],parts[1])
+    })
 }
 
 async function fetchFeist(){
   const result = await fetch("https://api.spotify.com/v1/artist/6CWTBjOJK75cTE8Xv8u1kj", {
-        method: "GET", headers: { Authorization: `Bearer ${localStorage.getItem('auth-token')}`}
+        method: "GET", headers: { Authorization: `Bearer ${localStorage.getItem('access_token')}`}
     });
   
   const temp = await result.json();

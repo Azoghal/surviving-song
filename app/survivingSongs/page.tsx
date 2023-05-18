@@ -6,8 +6,8 @@ const inter = Inter({ subsets: ['latin'] })
 let playlists: any;
 
 function getTokens(){
-  const accessToken = localStorage.getItem('auth-token') || ""
-  const refreshToken = localStorage.getItem('refresh-token') || ""
+  const accessToken = localStorage.getItem('access_token') || ""
+  const refreshToken = localStorage.getItem('access_token') || ""
   return {accessToken:accessToken, refreshToken:refreshToken}
 }
 
