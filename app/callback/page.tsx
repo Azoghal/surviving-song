@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocalStorage } from '@/utils/localStorage';
+//import { useLocalStorage } from '@/utils/localStorage';
 import { Inter } from 'next/font/google'
 import { useEffect } from 'react'
 
@@ -12,8 +12,8 @@ function getTokens(){
     var params = query.split('&')
     console.log(params)
     //console.log(params[0].split("=")[1])
-    useLocalStorage<String>('auth-token', params[0].split("=")[1])
-    useLocalStorage<String>('refresh-token', params[1].split("=")[1])
+    localStorage.setItem('auth-token', JSON.stringify(params[0].split("=")[1]))
+    localStorage.setItem('refresh-token', JSON.stringify(params[1].split("=")[1]))
     // // Split the hash into an array of parameter strings
     // const parameterStrings = hashWithoutHashSymbol.split('&');
     // // Create an object to store the parameter values
