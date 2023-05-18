@@ -36,7 +36,7 @@ async function fetchProfile(){
 
 async function fetchFeist(){
   const tokens = getTokens();
-  const result = await fetch("https://api.spotify.com/artist/6CWTBjOJK75cTE8Xv8u1kj", {
+  const result = await fetch("https://api.spotify.com/v1/artist/6CWTBjOJK75cTE8Xv8u1kj", {
         method: "GET", headers: { Authorization: `Bearer ${tokens.accessToken}`}
     });
   
