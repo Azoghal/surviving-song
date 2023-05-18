@@ -44,6 +44,13 @@ async function fetchFeist(){
   console.log(temp);
 }
 
+async function fetchTestCallback(){
+  const result = await fetch("https://gcp-test-379914.nw.r.appspot.com/test");
+  const temp = await result.json();
+  console.log(temp);
+}
+
+
 //6CWTBjOJK75cTE8Xv8u1kj
 
 export default function SurvivingSongs() {
@@ -70,6 +77,7 @@ export default function SurvivingSongs() {
       <button onClick={fetchPlaylists}> Fetch Playlists</button>
       <button onClick={fetchProfile}> Fetch Profile</button>
       <button onClick={fetchFeist}> Fetch Feist</button>
+      <button onClick={fetchTestCallback}> Test Callback</button>
       <div>
         {playlists}
       </div>
