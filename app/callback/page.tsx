@@ -12,8 +12,8 @@ function getTokens(){
     var params = query.split('&')
     console.log(params)
     //console.log(params[0].split("=")[1])
-    localStorage.setItem('auth-token', JSON.stringify(params[0]))
-    localStorage.setItem('refresh-token', JSON.stringify(params[1]))
+    localStorage.setItem('auth-token', JSON.stringify(params[0].split("=")[1]))
+    localStorage.setItem('refresh-token', JSON.stringify(params[1].split("=")[1]))
     // // Split the hash into an array of parameter strings
     // const parameterStrings = hashWithoutHashSymbol.split('&');
     // // Create an object to store the parameter values
