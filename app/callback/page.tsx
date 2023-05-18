@@ -1,5 +1,6 @@
 'use client'
 
+import { useLocalStorage } from '@/utils/localStorage';
 import { Inter } from 'next/font/google'
 import { useEffect } from 'react'
 
@@ -10,6 +11,8 @@ function getTokens(){
     const query = urlParams.split('?')[1]
     var params = query.split('&')
     console.log(params)
+    console.log(params[0].split("=")[1])
+    //useLocalStorage<String>('auth-code', params[0].split("=")[1]
     // // Split the hash into an array of parameter strings
     // const parameterStrings = hashWithoutHashSymbol.split('&');
     // // Create an object to store the parameter values
@@ -29,6 +32,8 @@ function getTokens(){
 
     // return {accessToken:accessToken, refreshToken:refreshToken}
 }
+
+
 
 export default function Callback() {
   // if the credentials are in the uri, extract and cookify them?
