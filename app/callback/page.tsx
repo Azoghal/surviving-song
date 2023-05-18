@@ -14,27 +14,16 @@ function getTokens(){
     //console.log(params[0].split("=")[1])
     localStorage.setItem('auth-token', JSON.stringify(params[0].split("=")[1]))
     localStorage.setItem('refresh-token', JSON.stringify(params[1].split("=")[1]))
-    // // Split the hash into an array of parameter strings
-    // const parameterStrings = hashWithoutHashSymbol.split('&');
-    // // Create an object to store the parameter values
-    // const parameters:any= {};
-
-    // // Loop through each parameter string
-    // parameterStrings.forEach(paramString => {
-    //     // Split the parameter string into its key and value parts
-    //     const parts = paramString.split('=');
-    //     // Store the key and value in the parameters object
-    //     parameters[parts[0]] = parts[1];
-    // });
-
-    // // Access the values of access_token and refresh_token
-    // const accessToken = parameters['access_token'];
-    // const refreshToken = parameters['refresh_token'];
-
-    // return {accessToken:accessToken, refreshToken:refreshToken}
 }
 
-
+async function fetchFeist(){
+  const result = await fetch("https://api.spotify.com/v1/artist/6CWTBjOJK75cTE8Xv8u1kj", {
+        method: "GET", headers: { Authorization: `Bearer ${localStorage.getItem('auth-token')}`}
+    });
+  
+  const temp = await result.json();
+  console.log(temp);
+}
 
 export default function Callback() {
   // if the credentials are in the uri, extract and cookify them?
@@ -49,6 +38,7 @@ export default function Callback() {
       <div>
         <p> You&apos;ve logged in, now it&apos;s time to do some stuff!</p>
       </div>
+      <button onClick={fetchFeist}>Fetch Feist</button>
     </main>
   )
 }
